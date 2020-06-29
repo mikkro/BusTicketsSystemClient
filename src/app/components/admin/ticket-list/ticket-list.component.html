@@ -1,0 +1,42 @@
+<div class="container" fxFlex>
+    <h1>TICKET LIST: </h1>
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ticketNumber">
+            <mat-header-cell *matHeaderCellDef>Reservation Number</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.ticketNumber}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="origin">
+            <mat-header-cell *matHeaderCellDef>Origin</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.origin}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="destination">
+            <mat-header-cell *matHeaderCellDef>Destination</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.destination}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.price | currency}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="seats">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="seats(element.ticketNumber)">Select</button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" (click)="deleteTicket(element.id)">Delete</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+    </mat-table>
+</div>

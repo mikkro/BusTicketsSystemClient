@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <h2>
+            <p>Add new Bus stop</p>
+        </h2>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+        <!-- fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"  -->
+        <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="selectedMoment" placeholder="Date Time">
+        <owl-date-time #dt2></owl-date-time>
+        <form [formGroup]="busStopForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input type="text" matInput placeholder="Name" [(ngModel)]="busStop.name" formControlName="name">
+                <mat-hint>Please enter a name .</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput placeholder="distance" [(ngModel)]="busStop.distance" formControlName="distance">
+                <mat-hint>Please enter a distance from a base .</mat-hint>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>

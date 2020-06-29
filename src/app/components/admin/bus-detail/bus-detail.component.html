@@ -1,0 +1,41 @@
+<div class="container" fxFlex fxLayoutAlign="none">
+    <div class="card-deck" fxLayout="column">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title" *ngIf="bus"><b>Bus number: {{bus.number}}</b></h1>
+               
+                <div>
+                    <h1 class="card-title"><b>Seats: </b></h1>
+                    <mat-table [dataSource]="dataSource">
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="number">
+                            <mat-header-cell *matHeaderCellDef>number</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.number}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="avaiable">
+                            <mat-header-cell *matHeaderCellDef>avaiable</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.avaiable}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ticket">
+                            <mat-header-cell *matHeaderCellDef>Ticket</mat-header-cell>
+                            <mat-cell *matCellDef="let element"><a *ngIf="element.ticket"
+                                    routerLink="/confirm/{{element.ticket.ticketNumber}}">{{element.ticket.id}}</a>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+
+
+                    </mat-table>
+                </div>
+                <div>
+                    <button mat-raised-button color="accent" (click)="addSeat()"> Add new Seat</button>
+                </div>
+                <a routerLink="/bus-list" class="btn btn-primary btn-custom-link">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

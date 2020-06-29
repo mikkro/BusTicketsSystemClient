@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card">
+        <h2>
+            <p>Add new seat</p>
+        </h2>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+        <!-- fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"  -->
+        <form [formGroup]="seatForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input type="number" matInput placeholder="Seat Number" formControlName="seatNumber">
+                <mat-hint>Please enter a seat number .</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select formControlName="avaiable" >
+                    <ng-container>
+                        <mat-option [value]="true">
+                            true
+                        </mat-option>
+                        <mat-option [value]="false">
+                            false
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-hint>avaiable</mat-hint>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button color="primary" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

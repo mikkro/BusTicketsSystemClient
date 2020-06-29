@@ -1,0 +1,32 @@
+<div class="container" fxFlex>
+    <h1>BUS LIST: </h1>
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef>Bus number</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.number}}</mat-cell>
+        </ng-container>
+       
+        <ng-container matColumnDef="seats">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="seats(element.id)">Seats</button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="busStops">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="busStops(element.id)">Bus Stops</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+    </mat-table>
+    <div>
+        <button mat-raised-button color="accent" (click)="addBus()"> Add new Bus</button>
+    </div>
+</div>

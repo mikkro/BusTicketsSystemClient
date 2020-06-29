@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="card card-container">
+        <h1>Your reservation: {{ticket.ticketNumber}}</h1>
+        <section>
+            <ul class="details-items">
+                <li>First Name: {{ticketUser.firstName}} {{ticketUser.lastName}}</li>
+                <li>Last Name: {{ticketUser.email}}</li>
+                <li>From : {{ticket.origin}}</li>
+
+                <li>To : {{ticket.destination}}</li>
+                <li>Price : {{ticket.price | currency}}</li>
+                <li>
+                    <div *ngFor="let seat of ticket.seats">
+                        Bus number: {{seat.bus.id}} / Seat number:  {{seat.number}} 
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <a href="ticket-list">Back</a>
+    </div>
+</div>

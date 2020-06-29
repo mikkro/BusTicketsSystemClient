@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+
+    <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSideNav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="logo">
+      <mat-icon aria-hidden="false"><a routerLink="/"> directions_bus</a></mat-icon>
+    </div>
+    <a href="/dashboard" *ngIf="isAdmin">Admin Panel</a>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+        <li *ngIf="!currentUser"><a routerLink="/signup">Signup</a></li>
+        <li *ngIf="!currentUser"><a href="/login">Login</a></li>
+        <li *ngIf="!isAdmin"> <a routerLink="findReservation">Find reservation</a></li>
+        <li *ngIf="currentUser && !isAdmin"><a routerLink="tickets">Tickets</a></li>
+        <li *ngIf="currentUser" ><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
+
+      </ul>
+    </div> 
+  </mat-toolbar>

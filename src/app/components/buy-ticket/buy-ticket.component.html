@@ -1,0 +1,89 @@
+<!-- 
+{{origin}}
+<hr>
+{{arrival}}
+<hr>
+{{bus | json}} -->
+<div class="container">
+    <div class="card card-container">
+        <div fxFlex fxLayout="column">
+            <div fxLayout="row">
+                <div fxFlex="20" fxLayout="column">
+                    <div><b>Bus number: </b>{{bus.number}}</div>
+                </div>
+                <div fxFlex="19" fxLayout="column">
+                    <div *ngFor="let stop of bus.busStops">
+                        <div *ngIf="stop.name==origin"><b>Departure Time: </b>{{stop.departureTime | date:'shortTime'}}
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="19" fxLayout="column">
+                    <div *ngFor="let stop of bus.busStops">
+                        <div *ngIf="stop.name==origin"><b>From: </b>{{stop.name }}</div>
+                    </div>
+                </div>
+                <div fxFlex="15" fxLayout="column">
+                    <div *ngFor="let stop of bus.busStops">
+                        <div *ngIf="stop.name==destination"><b>Arrival Time:
+                            </b>{{stop.departureTime | date:'shortTime' }}
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="19" fxLayout="column">
+                    <div *ngFor="let stop of bus.busStops">
+                        <div *ngIf="stop.name==destination"><b>To: </b>{{stop.name }}</div>
+                    </div>
+                </div>
+                <div fxFlex="5" fxLayout="column">
+                    <div><b>Price: </b>{{ bus.price | currency}}</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card card-container">
+        <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <form (ngSubmit)="onSubmit()">
+
+                <mat-form-field fxLayout="row">
+                    <mat-label>Select seat</mat-label>
+                    <!-- <mat-select [(ngModel)]="selectedSeat.id" name="seatNumber">
+                            <mat-option *ngFor="let seat of bus.seats" [value]="seat.id">
+                                  {{seat.number}}
+                            </mat-option>
+                        </mat-select> -->
+                    <mat-select [(ngModel)]="selectedSeat.id" name="seatNumber">
+                        <ng-container *ngFor="let seat of bus.seats">
+                            <mat-option *ngIf="seat.avaiable" [value]="seat.id">
+                                {{seat.number}}
+                            </mat-option>
+                        </ng-container>
+                    </mat-select>
+
+                </mat-form-field>
+                <mat-form-field fxLayout="row">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput placeholder="Your first name" [(ngModel)]="currentUser.firstName"
+                        name="fistName">
+                </mat-form-field>
+                <mat-form-field fxLayout="row">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput placeholder="Your last name" [(ngModel)]="currentUser.lastName"
+                        name="lastName">
+                </mat-form-field>
+                <mat-form-field fxLayout="row">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput placeholder="Your email" [(ngModel)]="currentUser.email" name="email">
+                </mat-form-field>
+                <button mat-raised-button type="submit" disabled="{{disabled}}" color="primary">Submit</button>
+            </form>
+            <div class="alert">
+                {{errorMessage}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card card-container">
+    <section>
+      <h1>Login</h1>
+      {{errorMessage}}
+      <!-- fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"  -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Your username" formControlName="username">
+          <mat-hint>Please enter a username.</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Your password" formControlName="password">
+          <mat-hint>Please enter your password.</mat-hint>
+          <mat-error>Missing password.</mat-error>
+        </mat-form-field>
+        <div><button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

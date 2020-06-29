@@ -1,0 +1,53 @@
+<div class="container" fxFlex fxLayoutAlign="none">
+    <div class="card-deck" fxLayout="column">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title"><b>BUS ID: {{id}}</b></h1>
+                <p class="card-text"><strong>
+                        <!-- <ul class="details-items">
+                            <li>First Name: {{user.firstName}}</li>
+                            <li>Last Name: {{user.lastName}}</li>
+                            <li>Email: {{user.email}}</li>
+                            <li>Role : {{user.role}}</li>
+                            
+                        </ul> -->
+                    </strong></p>
+                <div>
+                    <h3 class="card-title"><b>BUS STOPS: </b></h3>
+                    <mat-table [dataSource]="dataSource">
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="distance">
+                            <mat-header-cell *matHeaderCellDef>Distance</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.distance}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="departureTime">
+                            <mat-header-cell *matHeaderCellDef>Departure Time</mat-header-cell>
+                            <mat-cell *matCellDef="let element">{{element.departureTime | date:'shortTime'}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="select">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <button mat-raised-button color="primary" (click)="select(element.id)">Edit</button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+
+
+                    </mat-table>
+                </div>
+                <div>
+                    <button mat-raised-button color="accent" (click)="addNewBusStop()"> Add new bus stop</button>
+                </div>
+                <a routerLink="/bus-list" class="btn btn-primary btn-custom-link">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

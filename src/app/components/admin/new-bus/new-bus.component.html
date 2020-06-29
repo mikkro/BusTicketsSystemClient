@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card">
+        <h2>
+            <p>Add new Bus</p>
+        </h2>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+        <!-- fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"  -->
+        <form [formGroup]="busForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input type="number" matInput placeholder="Bus Number" formControlName="busNumber">
+                <mat-hint>Please enter a bus number .</mat-hint>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
